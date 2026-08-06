@@ -113,6 +113,7 @@
                 <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">À Propos</a>
                 <a href="#tech" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Technologies</a>
                 <a href="#manuels" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Manuels PDF</a>
+                <a href="#antiphishing" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Anti-Phishing</a>
                 <a href="#piliers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Expertises</a>
                 <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
             </nav>
@@ -263,6 +264,77 @@
         </div>
     </section>
 
+    <!-- Outil Anti-Phishing & Détection d'URL -->
+    <section id="antiphishing" class="py-16 bg-slate-50 dark:bg-slate-900/50 transition-colors border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <span class="text-blue-600 dark:text-blue-400 font-semibold text-xs uppercase tracking-widest">Sécurité Web & Audits</span>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Analyse d'URL & Détection de Phishing</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Un doute sur un lien reçu par e-mail ou SMS ? Collez l'URL ci-dessous pour analyser ses indicateurs de risque et lancer une vérification de sécurité.</p>
+            </div>
+
+            <!-- Formulaire de saisie d'URL -->
+            <form id="phishing-form" class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                    <input type="url" id="url-input" placeholder="https://exemple-suspect.com/login" required class="w-full p-4 pl-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839-1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 8.736C4 11.209 4.345 13.602 4.99 15.868"/>
+                    </svg>
+                </div>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+                    <span>Analyser l'URL</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </button>
+            </form>
+
+            <!-- Résultats de l'analyse immédiate -->
+            <div id="phishing-results" class="hidden mt-8 p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Diagnostic d'URL : <span id="analyzed-domain" class="text-blue-600 dark:text-blue-400 font-bold break-all"></span></h3>
+                    <span id="risk-badge" class="text-xs px-3 py-1 rounded-full font-bold"></span>
+                </div>
+
+                <!-- Analyse heuristique locale -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Indicateurs de sécurité de premier niveau</h4>
+                    <ul id="heuristics-list" class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                        <!-- Généré dynamiquement -->
+                    </ul>
+                </div>
+
+                <!-- Liens d'analyse approfondie externe -->
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Vérification en temps réel auprès des bases de données internationales de cybersécurité :</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                        <a id="link-virustotal" target="_blank" class="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition flex items-center justify-between">
+                            <span class="font-semibold text-slate-800 dark:text-slate-200">VirusTotal</span>
+                            <span class="text-xs text-blue-600 dark:text-blue-400">Scanner &rarr;</span>
+                        </a>
+                        <a id="link-urlscan" target="_blank" class="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition flex items-center justify-between">
+                            <span class="font-semibold text-slate-800 dark:text-slate-200">urlscan.io</span>
+                            <span class="text-xs text-blue-600 dark:text-blue-400">Capture & Sandbox &rarr;</span>
+                        </a>
+                        <a id="link-google-safebrowsing" target="_blank" class="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition flex items-center justify-between">
+                            <span class="font-semibold text-slate-800 dark:text-slate-200">Google Transparency</span>
+                            <span class="text-xs text-blue-600 dark:text-blue-400">Rapport Safe Browsing &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Call-To-Action audit d'entreprise -->
+                <div class="p-4 bg-blue-50 dark:bg-slate-800/80 rounded-lg border border-blue-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-slate-700 dark:text-slate-300">
+                        <span class="font-bold text-blue-700 dark:text-blue-400 block mb-0.5">Besoin de protéger le réseau de votre entreprise ?</span>
+                        Nous configurons le filtrage DNS, pare-feu MikroTik et protection des messageries contre le phishing.
+                    </div>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition whitespace-nowrap">Audit Cybersécurité</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Piliers de contenu -->
     <section id="piliers" class="py-16 bg-white dark:bg-slate-950 transition-colors">
         <div class="max-w-7xl mx-auto px-6">
@@ -399,7 +471,7 @@
             }
         });
 
-        // Gestion de la recherche de manuel sur la page (Sans redirection automatique)
+        // Gestion de la recherche de manuel sur la page
         const manualForm = document.getElementById('manual-search-form');
         const manualResults = document.getElementById('manual-results');
         const targetQuery = document.getElementById('target-query');
@@ -412,27 +484,142 @@
             const query = document.getElementById('manual-query').value.trim();
             if (!query) return;
 
-            // Encodage de la recherche ciblée
             const searchQueryGoogle = encodeURIComponent(`${query} (filetype:pdf OR manual OR guide OR "user manual" OR notice)`);
             const searchQueryManualsLib = encodeURIComponent(query);
             const searchQueryDuck = encodeURIComponent(`${query} manual guide filetype:pdf`);
 
-            // Préparation des URLs
-            const googleUrl = `https://www.google.com/search?q=${searchQueryGoogle}`;
-            const manualsLibUrl = `https://www.manualslib.com/search.html?search=${searchQueryManualsLib}`;
-            const duckUrl = `https://duckduckgo.com/?q=${searchQueryDuck}`;
+            linkGooglePdf.href = `https://www.google.com/search?q=${searchQueryGoogle}`;
+            linkManualsLib.href = `https://www.manualslib.com/search.html?search=${searchQueryManualsLib}`;
+            linkDuckManual.href = `https://duckduckgo.com/?q=${searchQueryDuck}`;
 
-            // Mise à jour de l'affichage directement sur la page
             targetQuery.textContent = query;
-            linkGooglePdf.href = googleUrl;
-            linkManualsLib.href = manualsLibUrl;
-            linkDuckManual.href = duckUrl;
-
-            // Révélation du bloc de résultats sur la page
             manualResults.classList.remove('hidden');
-
-            // Défilement doux vers les résultats
             manualResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Gestion de l'outil Anti-Phishing
+        const phishingForm = document.getElementById('phishing-form');
+        const phishingResults = document.getElementById('phishing-results');
+        const analyzedDomain = document.getElementById('analyzed-domain');
+        const riskBadge = document.getElementById('risk-badge');
+        const heuristicsList = document.getElementById('heuristics-list');
+
+        const linkVirusTotal = document.getElementById('link-virustotal');
+        const linkUrlScan = document.getElementById('link-urlscan');
+        const linkGoogleSafe = document.getElementById('link-google-safebrowsing');
+
+        phishingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const rawUrl = document.getElementById('url-input').value.trim();
+            if (!rawUrl) return;
+
+            let parsedUrl;
+            try {
+                parsedUrl = new URL(rawUrl);
+            } catch (err) {
+                alert("Veuillez saisir une URL valide (ex: https://exemple.com)");
+                return;
+            }
+
+            const domain = parsedUrl.hostname;
+            const fullUrl = parsedUrl.href;
+            const protocol = parsedUrl.protocol;
+
+            analyzedDomain.textContent = fullUrl;
+
+            // Analyse heuristique locale
+            let riskScore = 0;
+            let checks = [];
+
+            // Check 1: Protocole HTTPS
+            if (protocol === 'http:') {
+                riskScore += 1;
+                checks.push({
+                    status: 'warning',
+                    text: 'Connexion non sécurisée (HTTP au lieu de HTTPS). Les données saisies voyagent en clair.'
+                });
+            } else {
+                checks.push({
+                    status: 'ok',
+                    text: 'Protocole HTTPS détecté (Certificat SSL actif).'
+                });
+            }
+
+            // Check 2: Adresse IP brute
+            const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+            if (ipRegex.test(domain)) {
+                riskScore += 2;
+                checks.push({
+                    status: 'danger',
+                    text: 'L\'URL utilise une adresse IP directe au lieu d\'un nom de domaine. Pratique fréquente en phishing.'
+                });
+            }
+
+            // Check 3: Mots-clés sensibles
+            const suspiciousKeywords = ['login', 'verify', 'update', 'account', 'banking', 'secure', 'signin', 'confirm', 'paypal', 'microsoft', 'google'];
+            const foundKeywords = suspiciousKeywords.filter(word => fullUrl.toLowerCase().includes(word));
+            
+            if (foundKeywords.length > 0) {
+                checks.push({
+                    status: 'warning',
+                    text: `Termes sensibles détectés dans l'URL (${foundKeywords.join(', ')}). Vérifiez bien que le domaine appartient officiellement à ce service.`
+                });
+            }
+
+            // Check 4: Sous-domaines excessifs
+            if ((domain.match(/\./g) || []).length > 3) {
+                riskScore += 1;
+                checks.push({
+                    status: 'warning',
+                    text: 'Nombre de sous-domaines anormalement élevé. Technique classique d\'usurpation de marque.'
+                });
+            }
+
+            // Check 5: Caractère arobase (@)
+            if (fullUrl.includes('@')) {
+                riskScore += 2;
+                checks.push({
+                    status: 'danger',
+                    text: 'Présence du caractère "@" dans l\'URL, souvent utilisé pour masquer le véritable destinataire de la redirection.'
+                });
+            }
+
+            // Badge de risque
+            if (riskScore >= 3) {
+                riskBadge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-red-100 text-red-700 dark:bg-red-900/60 dark:text-red-300';
+                riskBadge.textContent = 'Risque Élevé';
+            } else if (riskScore > 0) {
+                riskBadge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/60 dark:text-amber-300';
+                riskBadge.textContent = 'Vigilance Requise';
+            } else {
+                riskBadge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/60 dark:text-emerald-300';
+                riskBadge.textContent = 'Indicateurs de base OK';
+            }
+
+            // Remplissage des règles
+            heuristicsList.innerHTML = checks.map(c => {
+                let icon = '✔';
+                let colorClass = 'text-emerald-600 dark:text-emerald-400';
+                if (c.status === 'warning') {
+                    icon = '⚠️';
+                    colorClass = 'text-amber-600 dark:text-amber-400';
+                } else if (c.status === 'danger') {
+                    icon = '🚨';
+                    colorClass = 'text-red-600 dark:text-red-400';
+                }
+                return `<li class="flex items-start gap-2"><span class="${colorClass}">${icon}</span> <span>${c.text}</span></li>`;
+            }).join('');
+
+            // Liens externes
+            const encodedUrl = encodeURIComponent(fullUrl);
+            const encodedDomain = encodeURIComponent(domain);
+
+            linkVirusTotal.href = `https://www.virustotal.com/gui/search/${encodedDomain}`;
+            linkUrlScan.href = `https://urlscan.io/search/#${encodedDomain}`;
+            linkGoogleSafe.href = `https://transparencyreport.google.com/safe-browsing/search?url=${encodedUrl}`;
+
+            phishingResults.classList.remove('hidden');
+            phishingResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     </script>
 </body>
