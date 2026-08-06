@@ -3,173 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaoelTech - Infrastructure, Réseaux & Support Technique</title>
-    <!-- Tailwind CSS CDN -->
+    <meta name="google-site-verification" content="y4tou7_KWUkB64gOoHnWPpr1B6pqhRjBqTheP6vsDPc" />
+    
+    <!-- SEO Principales -->
+    <title>RaoelTech Solutions | Maintenance Informatique & Réseaux à Antananarivo</title>
+    <meta name="description" content="Spécialiste informatique à Antananarivo : maintenance PC, réseaux MikroTik & Ubiquiti, caméras IP, cybersécurité et développement web sur mesure à Madagascar. Devis gratuit !">
+    <meta name="keywords" content="maintenance informatique Antananarivo, dépannage PC Madagascar, réseau MikroTik Tanà, Ubiquiti Madagascar, caméra IP Antananarivo, développement web Madagascar, contrat maintenance informatique">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://raoeltech-solutions.vercel.app/">
+
+    <!-- Open Graph (Partage WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:title" content="RaoelTech Solutions | Services Informatiques à Antananarivo">
+    <meta property="og:description" content="Maintenance PC, réseaux MikroTik/Ubiquiti, caméras IP et développement web sur mesure à Antananarivo et Madagascar.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raoeltech-solutions.vercel.app/">
+    <meta property="og:image" content="https://raoeltech-solutions.vercel.app/favicon.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Tailwind CSS avec support du Dark Mode par classe -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                        }
-                    }
-                }
+        }
+    </script>
+
+    <!-- Schema.org Data (Données structurées Google SEO Local) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ITStore",
+      "name": "RaoelTech Solutions",
+      "url": "https://raoeltech-solutions.vercel.app/",
+      "logo": "https://raoeltech-solutions.vercel.app/favicon.png",
+      "description": "Services informatiques professionnels à Antananarivo : maintenance, réseaux MikroTik/Ubiquiti, caméras IP, cybersécurité et développement sur mesure.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Antananarivo",
+        "addressRegion": "Analamanga",
+        "addressCountry": "MG"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Antananarivo"
+        },
+        {
+          "@type": "Country",
+          "name": "Madagascar"
+        }
+      ],
+      "priceRange": "$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services Informatiques",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Maintenance et dépannage informatique"
             }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Installation et administration de réseaux MikroTik et Ubiquiti"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Installation de caméras IP de vidéosurveillance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Développement logiciel et Web sur mesure"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Script Inline pour éviter le flash blanc au chargement -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans relative transition-colors duration-300">
 
-    <!-- En-tête / Navigation -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 font-bold text-xl text-slate-900 dark:text-white">
-                <span class="p-2 bg-blue-600 text-white rounded-lg text-sm">RT</span>
-                <span>RaoelTech</span>
-            </a>
-            
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-700 dark:text-blue-400">RaoelTech<span class="text-slate-900 dark:text-white">Solutions</span></a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#services" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Services</a>
-                <a href="#docs" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Recherche Manuels</a>
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">À Propos</a>
+                <a href="#tech" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Technologies</a>
+                <a href="#manuels" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Manuels PDF</a>
+                <a href="#piliers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Expertises</a>
                 <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
             </nav>
-
-            <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" aria-label="Basculez mode sombre">
-                <span class="dark:hidden">🌙</span>
-                <span class="hidden dark:inline">☀️</span>
-            </button>
+            <div class="flex items-center gap-4">
+                <!-- Bouton Toggle Dark Mode -->
+                <button id="theme-toggle" aria-label="Changer le thème" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Devis Gratuit</a>
+            </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="py-20 md:py-28 px-6 max-w-7xl mx-auto text-center">
-            <span class="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 text-xs font-bold rounded-full uppercase tracking-wider inline-block mb-4">Support & Infrastructure IT</span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight">
-                Solutions d'Infrastructure, Sécurité & Support Technique
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20 text-center md:text-left md:flex items-center justify-between">
+        <div class="md:w-1/2 space-y-6">
+            <span class="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">Intervention rapide à Antananarivo & Madagascar</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                Votre partenaire informatique de confiance.
             </h1>
-            <p class="mt-6 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                Accédez à nos outils d'assistance et recherchez directement les documentations et manuels techniques pour tous vos équipements réseau et systèmes.
+            <p class="text-lg text-slate-600 dark:text-slate-300">
+                Nous accompagnons les particuliers et les entreprises dans tous leurs besoins informatiques : maintenance, réseaux, développement logiciel, cybersécurité et assistance technique.
             </p>
-            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#docs" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-xl font-bold transition shadow-lg shadow-blue-500/20">Rechercher une notice</a>
-                <a href="#services" class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 px-6 py-3.5 rounded-xl font-semibold transition">Nos Services</a>
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-6 py-3 rounded-lg font-semibold transition shadow-lg shadow-blue-500/20">Demander un Devis Gratuit</a>
+                <a href="#services" class="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-center px-6 py-3 rounded-lg font-semibold transition">Découvrir nos Services</a>
             </div>
-        </section>
-
-        <!-- Section Moteur de Recherche de Manuels (Option 2 sur mesure) -->
-        <section id="docs" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800 transition-colors">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-10">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 text-xs font-bold rounded-full uppercase tracking-wider">Base documentaire</span>
-                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-3 mb-4">Rechercher un Manuel ou une Notice Officielle</h2>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">
-                        Tapez la marque, le modèle ou la référence de votre matériel informatique, réseau ou mécanique pour trouver directement le manuel d'utilisation ou la fiche technique officielle (PDF).
-                    </p>
-                </div>
-
-                <!-- Formulaire de recherche Web dynamique -->
-                <div class="max-w-2xl mx-auto bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-lg">
-                    <form onsubmit="handleManualSearch(event)" class="flex flex-col sm:flex-row gap-3">
-                        <div class="relative flex-1">
-                            <input type="text" 
-                                   id="manual-search-input" 
-                                   placeholder="Ex: MikroTik RB750Gr3, Yamaha Cygnus, ThinkPad X390..." 
-                                   required 
-                                   class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm">
-                            <div class="absolute left-3.5 top-4 text-slate-400">
-                                🔍
-                            </div>
-                        </div>
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 rounded-xl font-bold transition shadow-md shadow-blue-500/20 shrink-0 flex items-center justify-center gap-2">
-                            <span>Rechercher PDF</span>
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </form>
-
-                    <!-- Raccourcis de recherche rapide -->
-                    <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800">
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mb-3">Recherches fréquentes :</p>
-                        <div class="flex flex-wrap gap-2 text-xs">
-                            <button type="button" onclick="quickSearch('MikroTik RouterOS guide')" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition">MikroTik RouterOS</button>
-                            <button type="button" onclick="quickSearch('Ubiquiti UniFi AP manual')" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition">Ubiquiti UniFi</button>
-                            <button type="button" onclick="quickSearch('Hikvision NVR user manual')" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition">Hikvision NVR</button>
-                            <button type="button" onclick="quickSearch('Windows Server Active Directory doc')" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition">Windows Server AD</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Services -->
-        <section id="services" class="py-20 px-6 max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Nos domaines d'intervention</h2>
-                <p class="text-slate-600 dark:text-slate-400 mt-2">Accompagnement technique sur mesure pour vos infrastructures et équipements.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold mb-4">01</div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Infrastructure & Réseaux</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">Déploiement, routage, sécurisation et optimisation de vos réseaux locaux et serveurs.</p>
-                </div>
-                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold mb-4">02</div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Automation & Scripts</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">Automatisation de vos tâches récurrentes et intégrations personnalisées.</p>
-                </div>
-                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center font-bold mb-4">03</div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Maintenance & Support</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">Diagnostic, résolution de pannes informatiques et assistance technique globale.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Pied de page -->
-    <footer id="contact" class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 px-6 transition-colors">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
-            <p>© RaoelTech. Tous droits réservés.</p>
-            <p>Support IT, Réseaux & Recherche Documentaire Web.</p>
         </div>
+        <div class="md:w-5/12 mt-12 md:mt-0">
+            <div class="bg-gradient-to-tr from-blue-600 to-indigo-700 p-8 rounded-2xl text-white shadow-xl">
+                <h3 class="text-xl font-bold mb-4">Besoin d'assistance immédiate ?</h3>
+                <p class="text-blue-100 mb-6">Contrat de maintenance, dépannage ou audit informatique pour votre entreprise.</p>
+                <div class="space-y-3 text-sm">
+                    <p class="flex items-center gap-2">✔ Intervention sur site ou à distance</p>
+                    <p class="flex items-center gap-2">✔ Routeurs MikroTik & Ubiquiti</p>
+                    <p class="flex items-center gap-2">✔ Sauvegarde et sécurisation Cloud</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chiffres Clés (Preuve Sociale) -->
+    <section class="bg-blue-50 dark:bg-slate-900/50 py-12 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="space-y-2">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">+100</div>
+                <div class="text-slate-600 dark:text-slate-400 font-medium">PC & Équipements Réparés</div>
+            </div>
+            <div class="space-y-2">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">5</div>
+                <div class="text-slate-600 dark:text-slate-400 font-medium">Réseaux Déployés & Sécurisés</div>
+            </div>
+            <div class="space-y-2">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">4</div>
+                <div class="text-slate-600 dark:text-slate-400 font-medium">Entreprises Accompagnées</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À Propos -->
+    <section id="about" class="bg-white dark:bg-slate-950 py-16 transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-6">À Propos de RaoelTech Solutions</h2>
+            <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-center leading-relaxed">
+                Nous sommes spécialisés dans les solutions informatiques professionnelles. Nous intervenons rapidement à Antananarivo et dans tout Madagascar selon vos besoins pour vous apporter stabilité, performance et sécurité.
+            </p>
+        </div>
+    </section>
+
+    <!-- Technologies Maîtrisées -->
+    <section id="tech" class="py-16 bg-slate-100 dark:bg-slate-900/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-10">Technologies & Écosystèmes Maîtrisés</h2>
+            <div class="flex flex-wrap justify-center items-center gap-4">
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">MikroTik</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Ubiquiti</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Windows / Server</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Linux</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">React</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Python</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Cisco</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outil de Recherche de Manuel Technique -->
+    <section id="manuels" class="py-16 bg-white dark:bg-slate-950 transition-colors border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <span class="text-blue-600 dark:text-blue-400 font-semibold text-xs uppercase tracking-widest">Outil Pratique</span>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Recherche de Manuels & Notices Techniques</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Tapez la référence d'un équipement (réseau, PC, scooter, matériel) pour générer une recherche ciblée sur les documentations PDF et guides officiels.</p>
+            </div>
+
+            <form id="manual-search-form" class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                    <input type="text" id="manual-query" placeholder="Ex: MikroTik RB750Gr3, Yamaha Cygnus, Dahua NVR, ThinkPad X390..." required class="w-full p-4 pl-11 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+                    <span>Rechercher</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </button>
+            </form>
+
+            <!-- Résultats / Liens d'accès direct sur le site -->
+            <div id="manual-results" class="hidden mt-8 p-6 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Résultats ciblés pour : <span id="target-query" class="text-blue-600 dark:text-blue-400 font-bold"></span></h3>
+                    <span class="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full font-medium">Filtre PDF / Manuel</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <a id="link-google-pdf" target="_blank" class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition group flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-red-500 uppercase tracking-wide">Google PDF Search</span>
+                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Documents PDF directs</h4>
+                        </div>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Ouvrir dans un nouvel onglet &rarr;</span>
+                    </a>
+                    <a id="link-manualslib" target="_blank" class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition group flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-500 uppercase tracking-wide">ManualsLib</span>
+                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Base de notices officielles</h4>
+                        </div>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Voir le manuel &rarr;</span>
+                    </a>
+                    <a id="link-duck-manual" target="_blank" class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition group flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-500 uppercase tracking-wide">Recherche Générale</span>
+                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Guides & Schémas Technique</h4>
+                        </div>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Consulter les guides &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Piliers de contenu -->
+    <section id="piliers" class="py-16 bg-white dark:bg-slate-950 transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">Nos Domaines d'Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="text-3xl mb-3">🔧</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Maintenance</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Parc informatique, dépannage PC/Mac, contrats de maintenance.</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="text-3xl mb-3">🌐</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Réseaux & Infra</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">MikroTik, Ubiquiti, caméras IP, serveurs Windows/Linux.</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="text-3xl mb-3">🔒</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Cybersécurité</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Audits, sauvegarde de données, sécurisation d'accès.</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="text-3xl mb-3">💻</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Développement</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Applications sur mesure, sites Web, solutions métier.</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="text-3xl mb-3">🏢</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Vie & Projets</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Réalisations sur le terrain, assistance à distance, conseils.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liste complète des services -->
+    <section id="services" class="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">Nos Services Informatiques</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Dépannage informatique</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Maintenance ordinateurs</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation Windows</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réparation PC portable & bureau</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réseau informatique</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Routeurs MikroTik & Ubiquiti</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Caméras IP & Sécurité</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Développement Web & Apps</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sécurité informatique & Audit</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Contrat de maintenance</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Assistance à distance</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation imprimantes & Wi-Fi</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sauvegarde des données & Cloud</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Support informatique en entreprise</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de Contact avec Pièce Jointe -->
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">Contactez-nous pour un devis gratuit</h2>
+            <p class="text-center text-slate-400 mb-8">Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
+            
+            <form action="https://formspree.io/f/mkjwnoov" method="POST" enctype="multipart/form-data" class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-1">Nom / Nom de l'entreprise</label>
+                    <input type="text" name="name" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Email ou Numéro de Téléphone</label>
+                    <input type="text" name="contact" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Service recherché</label>
+                    <select name="service" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+                        <option>Maintenance informatique</option>
+                        <option>Réseaux & Infrastructures (MikroTik/Ubiquiti)</option>
+                        <option>Développement logiciel / Web</option>
+                        <option>Sécurité & Caméras IP</option>
+                        <option>Autre demande</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Message / Détails de la demande</label>
+                    <textarea name="message" rows="4" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Joindre un fichier (Optionnel : photo du matériel, schéma, CDC)</label>
+                    <input type="file" name="attachment" class="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition">Envoyer la demande de devis</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-6 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 RaoelTech Solutions - Antananarivo, Madagascar. Tous droits réservés.</p>
     </footer>
 
-    <!-- Logic JS -->
+    <!-- Bouton WhatsApp Flottant Direct -->
+    <a href="https://wa.me/261380859743?text=Bonjour%20RaoelTech%20Solutions,%20j'aimerais%20demander%20un%20devis." 
+       target="_blank" 
+       title="Contactez-nous sur WhatsApp"
+       class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 flex items-center justify-center z-50">
+        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.205 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts JavaScript -->
     <script>
-        // Gestion de la recherche de manuels
-        function handleManualSearch(event) {
-            event.preventDefault();
-            const input = document.getElementById('manual-search-input');
-            const query = input.value.trim();
-            
-            if (query) {
-                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query + ' (filetype:pdf OR manual OR guide OR "user manual")')}`;
-                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+        // Gestion du Dark Mode
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
             }
-        }
+        });
 
-        function quickSearch(searchTerm) {
-            const input = document.getElementById('manual-search-input');
-            input.value = searchTerm;
-            const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm + ' (filetype:pdf OR manual OR guide)')}`;
-            window.open(searchUrl, '_blank', 'noopener,noreferrer');
-        }
+        // Gestion de la recherche de manuel
+        const manualForm = document.getElementById('manual-search-form');
+        const manualResults = document.getElementById('manual-results');
+        const targetQuery = document.getElementById('target-query');
+        const linkGooglePdf = document.getElementById('link-google-pdf');
+        const linkManualsLib = document.getElementById('link-manualslib');
+        const linkDuckManual = document.getElementById('link-duck-manual');
 
-        // Commutation Mode Sombre / Mode Clair
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
+        manualForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = document.getElementById('manual-query').value.trim();
+            if (!query) return;
+
+            // Encodage de la recherche
+            const searchQueryGoogle = encodeURIComponent(`${query} (filetype:pdf OR manual OR guide OR "user manual" OR notice)`);
+            const searchQueryManualsLib = encodeURIComponent(query);
+            const searchQueryDuck = encodeURIComponent(`${query} manual guide filetype:pdf`);
+
+            // URLs ciblées
+            const googleUrl = `https://www.google.com/search?q=${searchQueryGoogle}`;
+            const manualsLibUrl = `https://www.manualslib.com/search.html?search=${searchQueryManualsLib}`;
+            const duckUrl = `https://duckduckgo.com/?q=${searchQueryDuck}`;
+
+            // Mise à jour de l'affichage sur la page
+            targetQuery.textContent = query;
+            linkGooglePdf.href = googleUrl;
+            linkManualsLib.href = manualsLibUrl;
+            linkDuckManual.href = duckUrl;
+
+            manualResults.classList.remove('hidden');
+
+            // Ouverture directe de la recherche Google ciblée PDF dans un nouvel onglet
+            window.open(googleUrl, '_blank');
+        });
     </script>
 </body>
 </html>
