@@ -112,6 +112,7 @@
                 <a href="#services" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Services</a>
                 <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">À Propos</a>
                 <a href="#tech" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Technologies</a>
+                <a href="#docs" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Documentation</a>
                 <a href="#piliers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Expertises</a>
                 <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
             </nav>
@@ -202,32 +203,121 @@
         </div>
     </section>
 
+    <!-- Centre de Documentation & Manuels Officiels -->
+    <section id="docs" class="py-20 bg-white dark:bg-slate-950 transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-4">Manuels & Documentation Officielle</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mb-10">Recherchez et téléchargez directement les guides de configuration et manuels d'utilisation officiels des principaux constructeurs.</p>
+
+            <!-- Barre de recherche -->
+            <div class="max-w-md mx-auto mb-12">
+                <div class="relative">
+                    <input type="text" id="doc-search" placeholder="Rechercher un manuel (ex: MikroTik, Ubiquiti, Cisco...)" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-sm">
+                    <div class="absolute left-3 top-3.5 text-slate-400">
+                        🔍
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grille de cartes de documentation -->
+            <div id="docs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="doc-item p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-500 transition" data-keywords="mikrotik routeros reseau routeur configuration manual">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 text-xs font-bold rounded-md">MikroTik</span>
+                        <span class="text-xs text-slate-500">PDF Officiel</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Guide RouterOS & MikroTik Documentation</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs mb-6">Documentation complète de configuration RouterOS (VLAN, Firewall, Hotspot, VPN).</p>
+                    <a href="https://help.mikrotik.com/docs/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Accéder au Manuel →</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="doc-item p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-500 transition" data-keywords="ubiquiti unifi wifi access point switch guide">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 text-xs font-bold rounded-md">Ubiquiti</span>
+                        <span class="text-xs text-slate-500">Guide Constructeur</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Manuel d'installation Ubiquiti UniFi</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs mb-6">Guide officiel de déploiement des points d'accès UniFi AP et des Switches UniFi.</p>
+                    <a href="https://help.ui.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Accéder au Manuel →</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="doc-item p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-500 transition" data-keywords="cisco ios switch router command line cli manual">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 text-xs font-bold rounded-md">Cisco</span>
+                        <span class="text-xs text-slate-500">PDF Officiel</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Guide des Commandes Cisco IOS CLI</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs mb-6">Référence officielle des commandes pour la configuration des switchs et routeurs Cisco.</p>
+                    <a href="https://www.cisco.com/c/en/us/support/index.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Accéder au Manuel →</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="doc-item p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-500 transition" data-keywords="windows server active directory domain controller microsoft deployment">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="px-3 py-1 bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300 text-xs font-bold rounded-md">Microsoft</span>
+                        <span class="text-xs text-slate-500">Documentation</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Guide Administration Windows Server</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs mb-6">Documentation officielle Microsoft Learn pour la gestion d'Active Directory et des rôles serveur.</p>
+                    <a href="https://learn.microsoft.com/fr-fr/windows-server/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Accéder au Manuel →</a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="doc-item p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-500 transition" data-keywords="linux ubuntu debian sysadmin terminal manual server">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="px-3 py-1 bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 text-xs font-bold rounded-md">Linux</span>
+                        <span class="text-xs text-slate-500">Manuel Admin</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Manuel Administrateur Ubuntu / Debian Server</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs mb-6">Guide officiel pour la maintenance, la sécurité et l'administration réseau sous Linux Server.</p>
+                    <a href="https://ubuntu.com/server/docs" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Accéder au Manuel →</a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="doc-item p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-500 transition" data-keywords="camera ip hikvision dahua nvr cctv surveillance manual">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="px-3 py-1 bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 text-xs font-bold rounded-md">Vidéosurveillance</span>
+                        <span class="text-xs text-slate-500">Guide Caméra IP</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Guide Configuration NVR & Caméras IP</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs mb-6">Manuel utilisateur et procédures de configuration réseau pour enregistreurs et caméras IP.</p>
+                    <a href="https://www.hikvision.com/fr/support/download/user-manuals/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Accéder au Manuel →</a>
+                </div>
+            </div>
+            
+            <p id="no-results" class="hidden text-center text-slate-500 dark:text-slate-400 mt-8">Aucun manuel trouvé pour cette recherche.</p>
+        </div>
+    </section>
+
     <!-- Piliers de contenu -->
-    <section id="piliers" class="py-16 bg-white dark:bg-slate-950 transition-colors">
+    <section id="piliers" class="py-16 bg-slate-100 dark:bg-slate-900/80 transition-colors">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">Nos Domaines d'Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
                     <div class="text-3xl mb-3">🔧</div>
                     <h3 class="font-bold text-slate-900 dark:text-white mb-2">Maintenance</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Parc informatique, dépannage PC/Mac, contrats de maintenance.</p>
                 </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
                     <div class="text-3xl mb-3">🌐</div>
                     <h3 class="font-bold text-slate-900 dark:text-white mb-2">Réseaux & Infra</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">MikroTik, Ubiquiti, caméras IP, serveurs Windows/Linux.</p>
                 </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
                     <div class="text-3xl mb-3">🔒</div>
                     <h3 class="font-bold text-slate-900 dark:text-white mb-2">Cybersécurité</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Audits, sauvegarde de données, sécurisation d'accès.</p>
                 </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
                     <div class="text-3xl mb-3">💻</div>
                     <h3 class="font-bold text-slate-900 dark:text-white mb-2">Développement</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Applications sur mesure, sites Web, solutions métier.</p>
                 </div>
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
                     <div class="text-3xl mb-3">🏢</div>
                     <h3 class="font-bold text-slate-900 dark:text-white mb-2">Vie & Projets</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Réalisations sur le terrain, assistance à distance, conseils.</p>
@@ -237,24 +327,24 @@
     </section>
 
     <!-- Liste complète des services -->
-    <section id="services" class="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors">
+    <section id="services" class="py-20 bg-white dark:bg-slate-950 transition-colors">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">Nos Services Informatiques</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Dépannage informatique</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Maintenance ordinateurs</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation Windows</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réparation PC portable & bureau</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réseau informatique</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Routeurs MikroTik & Ubiquiti</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Caméras IP & Sécurité</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Développement Web & Apps</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sécurité informatique & Audit</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Contrat de maintenance</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Assistance à distance</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation imprimantes & Wi-Fi</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sauvegarde des données & Cloud</div>
-                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Support informatique en entreprise</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Dépannage informatique</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Maintenance ordinateurs</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation Windows</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réparation PC portable & bureau</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réseau informatique</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Routeurs MikroTik & Ubiquiti</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Caméras IP & Sécurité</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Développement Web & Apps</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sécurité informatique & Audit</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Contrat de maintenance</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Assistance à distance</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation imprimantes & Wi-Fi</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sauvegarde des données & Cloud</div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 hover:shadow-md transition">Support informatique en entreprise</div>
             </div>
         </div>
     </section>
@@ -312,13 +402,13 @@
         </svg>
     </a>
 
-    <!-- Script JavaScript pour la gestion du Dark Mode -->
+    <!-- Scripts JavaScript (Dark Mode & Recherche dynamique) -->
     <script>
+        // Gestion du Dark Mode
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
         const themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Afficher la bonne icône selon le mode
         if (document.documentElement.classList.contains('dark')) {
             themeToggleLightIcon.classList.remove('hidden');
         } else {
@@ -326,17 +416,43 @@
         }
 
         themeToggleBtn.addEventListener('click', function() {
-            // Basculer l'icône
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
 
-            // Basculer le mode sombr/clair
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
                 localStorage.setItem('theme', 'light');
             } else {
                 document.documentElement.classList.add('dark');
                 localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Script de recherche en temps réel pour la documentation
+        const searchInput = document.getElementById('doc-search');
+        const docItems = document.querySelectorAll('.doc-item');
+        const noResults = document.getElementById('no-results');
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            let matches = 0;
+
+            docItems.forEach(item => {
+                const keywords = item.getAttribute('data-keywords').toLowerCase();
+                const textContent = item.textContent.toLowerCase();
+
+                if (keywords.includes(query) || textContent.includes(query)) {
+                    item.classList.remove('hidden');
+                    matches++;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            if (matches === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
             }
         });
     </script>
