@@ -203,13 +203,13 @@
         </div>
     </section>
 
-    <!-- Outil de Recherche de Manuel Technique -->
+    <!-- Outil de Recherche de Manuel Technique sur le site -->
     <section id="manuels" class="py-16 bg-white dark:bg-slate-950 transition-colors border-y border-slate-200 dark:border-slate-800">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-8">
                 <span class="text-blue-600 dark:text-blue-400 font-semibold text-xs uppercase tracking-widest">Outil Pratique</span>
                 <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">Recherche de Manuels & Notices Techniques</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Tapez la référence d'un équipement (réseau, PC, scooter, matériel) pour générer une recherche ciblée sur les documentations PDF et guides officiels.</p>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Tapez la référence d'un équipement (réseau, PC, scooter, matériel) pour générer instantanément des filtres de recherche de documentations PDF.</p>
             </div>
 
             <form id="manual-search-form" class="flex flex-col sm:flex-row gap-3">
@@ -222,38 +222,41 @@
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
                     <span>Rechercher</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                 </button>
             </form>
 
-            <!-- Résultats / Liens d'accès direct sur le site -->
+            <!-- Résultats affichés directement sur la page sans quitter le site -->
             <div id="manual-results" class="hidden mt-8 p-6 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
                     <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Résultats ciblés pour : <span id="target-query" class="text-blue-600 dark:text-blue-400 font-bold"></span></h3>
-                    <span class="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full font-medium">Filtre PDF / Manuel</span>
+                    <span class="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-2.5 py-1 rounded-full font-medium">Manuels Prêts</span>
                 </div>
+                
+                <p class="text-xs text-slate-500 dark:text-slate-400">Sélectionnez la source de documentation souhaitée :</p>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <a id="link-google-pdf" target="_blank" class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition group flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-bold text-red-500 uppercase tracking-wide">Google PDF Search</span>
-                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Documents PDF directs</h4>
+                            <span class="text-xs font-bold text-red-500 uppercase tracking-wide">Fichiers PDF direct</span>
+                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Notice PDF brute</h4>
                         </div>
-                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Ouvrir dans un nouvel onglet &rarr;</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Télécharger le PDF &rarr;</span>
                     </a>
                     <a id="link-manualslib" target="_blank" class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition group flex flex-col justify-between">
                         <div>
                             <span class="text-xs font-bold text-blue-500 uppercase tracking-wide">ManualsLib</span>
-                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Base de notices officielles</h4>
+                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Notice Constructeur</h4>
                         </div>
-                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Voir le manuel &rarr;</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Consulter le manuel &rarr;</span>
                     </a>
                     <a id="link-duck-manual" target="_blank" class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition group flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-bold text-emerald-500 uppercase tracking-wide">Recherche Générale</span>
-                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Guides & Schémas Technique</h4>
+                            <span class="text-xs font-bold text-emerald-500 uppercase tracking-wide">Guides & Schémas</span>
+                            <h4 class="font-semibold text-slate-800 dark:text-slate-200 mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">Schémas d'installation</h4>
                         </div>
-                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Consulter les guides &rarr;</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-3 inline-flex items-center gap-1">Voir les guides &rarr;</span>
                     </a>
                 </div>
             </div>
@@ -396,7 +399,7 @@
             }
         });
 
-        // Gestion de la recherche de manuel
+        // Gestion de la recherche de manuel sur la page (Sans redirection automatique)
         const manualForm = document.getElementById('manual-search-form');
         const manualResults = document.getElementById('manual-results');
         const targetQuery = document.getElementById('target-query');
@@ -409,26 +412,27 @@
             const query = document.getElementById('manual-query').value.trim();
             if (!query) return;
 
-            // Encodage de la recherche
+            // Encodage de la recherche ciblée
             const searchQueryGoogle = encodeURIComponent(`${query} (filetype:pdf OR manual OR guide OR "user manual" OR notice)`);
             const searchQueryManualsLib = encodeURIComponent(query);
             const searchQueryDuck = encodeURIComponent(`${query} manual guide filetype:pdf`);
 
-            // URLs ciblées
+            // Préparation des URLs
             const googleUrl = `https://www.google.com/search?q=${searchQueryGoogle}`;
             const manualsLibUrl = `https://www.manualslib.com/search.html?search=${searchQueryManualsLib}`;
             const duckUrl = `https://duckduckgo.com/?q=${searchQueryDuck}`;
 
-            // Mise à jour de l'affichage sur la page
+            // Mise à jour de l'affichage directement sur la page
             targetQuery.textContent = query;
             linkGooglePdf.href = googleUrl;
             linkManualsLib.href = manualsLibUrl;
             linkDuckManual.href = duckUrl;
 
+            // Révélation du bloc de résultats sur la page
             manualResults.classList.remove('hidden');
 
-            // Ouverture directe de la recherche Google ciblée PDF dans un nouvel onglet
-            window.open(googleUrl, '_blank');
+            // Défilement doux vers les résultats
+            manualResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     </script>
 </body>
