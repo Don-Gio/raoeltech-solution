@@ -448,6 +448,7 @@
     <!-- Scripts JavaScript -->
     <script>
         // Gestion du Dark Mode
+        // Gestion du Dark Mode
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
         const themeToggleBtn = document.getElementById('theme-toggle');
@@ -497,7 +498,7 @@
             manualResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
-        // Gestion de l'outil Anti-Phishing
+        // Gestion de l'outil Anti-Phishing avec Résolution Serverless
         const phishingForm = document.getElementById('phishing-form');
         const phishingResults = document.getElementById('phishing-results');
         const analyzedDomain = document.getElementById('analyzed-domain');
@@ -508,16 +509,51 @@
         const linkUrlScan = document.getElementById('link-urlscan');
         const linkGoogleSafe = document.getElementById('link-google-safebrowsing');
 
-        phishingForm.addEventListener('submit', function(e) {
+        phishingForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const rawUrl = document.getElementById('url-input').value.trim();
-            if (!rawUrl) return;
+            
+            // Validation champ vide
+            if (!rawUrl) {
+                phishingResults.classList.remove('hidden');
+                analyzedDomain.textContent = "Aucune URL saisie";
+                riskBadge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/60 dark:text-amber-300';
+                riskBadge.textContent = 'Attention';
+                heuristicsList.innerHTML = `<li class="flex items-start gap-2 text-amber-600 dark:text-amber-400"><span>⚠️</span> <span>Veuillez saisir une URL valide avant de lancer l'analyse.</span></li>`;
+                phishingResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return;
+            }
+
+            // Affichage de l'état de chargement / résolution réseau
+            analyzedDomain.textContent = "Résolution des redirections en cours...";
+            riskBadge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300';
+            riskBadge.textContent = 'Analyse réseau...';
+            heuristicsList.innerHTML = `<li class="flex items-center gap-2 text-slate-500 dark:text-slate-400">⏳ Interrogation du serveur Vercel pour démasquer l'URL finale...</li>`;
+            
+            phishingResults.classList.remove('hidden');
+            phishingResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            let finalUrlToAnalyze = rawUrl;
+
+            // Étape 1 : Appel de la fonction Serverless pour résoudre l'URL (bit.ly, etc.)
+            try {
+                const apiRes = await fetch(`/api/resolve?url=${encodeURIComponent(rawUrl)}`);
+                const apiData = await apiRes.json();
+                if (apiData.resolvedUrl) {
+                    finalUrlToAnalyze = apiData.resolvedUrl;
+                }
+            } catch (err) {
+                console.warn("Échec de la résolution serveur, analyse de l'URL brute.", err);
+            }
 
             let parsedUrl;
             try {
-                parsedUrl = new URL(rawUrl);
+                parsedUrl = new URL(finalUrlToAnalyze.startsWith('http') ? finalUrlToAnalyze : 'https://' + finalUrlToAnalyze);
             } catch (err) {
-                alert("Veuillez saisir une URL valide (ex: https://exemple.com)");
+                analyzedDomain.textContent = finalUrlToAnalyze;
+                riskBadge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-red-100 text-red-700 dark:bg-red-900/60 dark:text-red-300';
+                riskBadge.textContent = 'Erreur';
+                heuristicsList.innerHTML = `<li class="flex items-start gap-2 text-red-600 dark:text-red-400"><span>🚨</span> <span>L'URL obtenue est invalide (ex: format incorrect).</span></li>`;
                 return;
             }
 
@@ -527,9 +563,18 @@
 
             analyzedDomain.textContent = fullUrl;
 
-            // Analyse heuristique locale
+            // Analyse heuristique locale sur l'URL finale résolue
             let riskScore = 0;
             let checks = [];
+
+            // Indication si une redirection a eu lieu
+            if (rawUrl !== finalUrlToAnalyze && !rawUrl.includes(finalUrlToAnalyze)) {
+                riskScore += 1;
+                checks.push({
+                    status: 'warning',
+                    text: `Redirection détectée : Le lien initial redirige vers <strong class="break-all">${domain}</strong>.`
+                });
+            }
 
             // Check 1: Protocole HTTPS
             if (protocol === 'http:') {
@@ -610,7 +655,7 @@
                 return `<li class="flex items-start gap-2"><span class="${colorClass}">${icon}</span> <span>${c.text}</span></li>`;
             }).join('');
 
-            // Liens externes
+            // Liens externes basés sur l'URL finale résolue
             const encodedUrl = encodeURIComponent(fullUrl);
             const encodedDomain = encodeURIComponent(domain);
 
