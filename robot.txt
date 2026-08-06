@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raoeltech-solutions.vercel.app/sitemap.xml
