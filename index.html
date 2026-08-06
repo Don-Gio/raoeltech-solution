@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="y4tou7_KWUkB64gOoHnWPpr1B6pqhRjBqTheP6vsDPc" />
+    
     <!-- SEO Principales -->
     <title>RaoelTech Solutions | Maintenance Informatique & Réseaux à Antananarivo</title>
     <meta name="description" content="Spécialiste informatique à Antananarivo : maintenance PC, réseaux MikroTik & Ubiquiti, caméras IP, cybersécurité et développement web sur mesure à Madagascar. Devis gratuit !">
@@ -21,8 +22,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS avec support du Dark Mode par classe -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 
     <!-- Schema.org Data (Données structurées Google SEO Local) -->
     <script type="application/ld+json">
@@ -86,36 +92,57 @@
       }
     }
     </script>
+
+    <!-- Script Inline pour éviter le flash blanc au chargement -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans relative">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans relative transition-colors duration-300">
 
     <!-- Navigation -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-blue-700">RaoelTech<span class="text-slate-900">Solutions</span></a>
+            <a href="#" class="text-2xl font-bold text-blue-700 dark:text-blue-400">RaoelTech<span class="text-slate-900 dark:text-white">Solutions</span></a>
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#services" class="hover:text-blue-600 transition">Services</a>
-                <a href="#about" class="hover:text-blue-600 transition">À Propos</a>
-                <a href="#piliers" class="hover:text-blue-600 transition">Expertises</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+                <a href="#services" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Services</a>
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">À Propos</a>
+                <a href="#tech" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Technologies</a>
+                <a href="#piliers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Expertises</a>
+                <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
             </nav>
-            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Devis Gratuit</a>
+            <div class="flex items-center gap-4">
+                <!-- Bouton Toggle Dark Mode -->
+                <button id="theme-toggle" aria-label="Changer le thème" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Devis Gratuit</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="max-w-7xl mx-auto px-6 py-20 text-center md:text-left md:flex items-center justify-between">
         <div class="md:w-1/2 space-y-6">
-            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Intervention rapide à Antananarivo & Madagascar</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            <span class="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">Intervention rapide à Antananarivo & Madagascar</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
                 Votre partenaire informatique de confiance.
             </h1>
-            <p class="text-lg text-slate-600">
+            <p class="text-lg text-slate-600 dark:text-slate-300">
                 Nous accompagnons les particuliers et les entreprises dans tous leurs besoins informatiques : maintenance, réseaux, développement logiciel, cybersécurité et assistance technique.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 pt-4">
                 <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-6 py-3 rounded-lg font-semibold transition shadow-lg shadow-blue-500/20">Demander un Devis Gratuit</a>
-                <a href="#services" class="border border-slate-300 hover:bg-slate-100 text-center px-6 py-3 rounded-lg font-semibold transition">Découvrir nos Services</a>
+                <a href="#services" class="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-center px-6 py-3 rounded-lg font-semibold transition">Découvrir nos Services</a>
             </div>
         </div>
         <div class="md:w-5/12 mt-12 md:mt-0">
@@ -131,80 +158,114 @@
         </div>
     </section>
 
+    <!-- Chiffres Clés (Preuve Sociale) -->
+    <section class="bg-blue-50 dark:bg-slate-900/50 py-12 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="space-y-2">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">+100</div>
+                <div class="text-slate-600 dark:text-slate-400 font-medium">PC & Équipements Réparés</div>
+            </div>
+            <div class="space-y-2">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">5</div>
+                <div class="text-slate-600 dark:text-slate-400 font-medium">Réseaux Déployés & Sécurisés</div>
+            </div>
+            <div class="space-y-2">
+                <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">4</div>
+                <div class="text-slate-600 dark:text-slate-400 font-medium">Entreprises Accompagnées</div>
+            </div>
+        </div>
+    </section>
+
     <!-- À Propos -->
-    <section id="about" class="bg-white py-16">
+    <section id="about" class="bg-white dark:bg-slate-950 py-16 transition-colors">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">À Propos de RaoelTech Solutions</h2>
-            <p class="text-slate-600 max-w-3xl mx-auto text-center leading-relaxed">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-6">À Propos de RaoelTech Solutions</h2>
+            <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-center leading-relaxed">
                 Nous sommes spécialisés dans les solutions informatiques professionnelles. Nous intervenons rapidement à Antananarivo et dans tout Madagascar selon vos besoins pour vous apporter stabilité, performance et sécurité.
             </p>
         </div>
     </section>
 
-    <!-- Piliers de contenu -->
-    <section id="piliers" class="py-16 bg-slate-100">
+    <!-- Technologies Maîtrisées -->
+    <section id="tech" class="py-16 bg-slate-100 dark:bg-slate-900/80 transition-colors">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Nos Domaines d'Expertise</h2>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-10">Technologies & Écosystèmes Maîtrisés</h2>
+            <div class="flex flex-wrap justify-center items-center gap-4">
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">MikroTik</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Ubiquiti</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Windows / Server</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Linux</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">React</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Python</span>
+                <span class="px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-slate-800 dark:text-slate-200 font-semibold shadow-sm hover:border-blue-500 transition">Cisco</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Piliers de contenu -->
+    <section id="piliers" class="py-16 bg-white dark:bg-slate-950 transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">Nos Domaines d'Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
                     <div class="text-3xl mb-3">🔧</div>
-                    <h3 class="font-bold text-slate-900 mb-2">Maintenance</h3>
-                    <p class="text-xs text-slate-500">Parc informatique, dépannage PC/Mac, contrats de maintenance.</p>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Maintenance</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Parc informatique, dépannage PC/Mac, contrats de maintenance.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
                     <div class="text-3xl mb-3">🌐</div>
-                    <h3 class="font-bold text-slate-900 mb-2">Réseaux & Infra</h3>
-                    <p class="text-xs text-slate-500">MikroTik, Ubiquiti, caméras IP, serveurs Windows/Linux.</p>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Réseaux & Infra</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">MikroTik, Ubiquiti, caméras IP, serveurs Windows/Linux.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
                     <div class="text-3xl mb-3">🔒</div>
-                    <h3 class="font-bold text-slate-900 mb-2">Cybersécurité</h3>
-                    <p class="text-xs text-slate-500">Audits, sauvegarde de données, sécurisation d'accès.</p>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Cybersécurité</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Audits, sauvegarde de données, sécurisation d'accès.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
                     <div class="text-3xl mb-3">💻</div>
-                    <h3 class="font-bold text-slate-900 mb-2">Développement</h3>
-                    <p class="text-xs text-slate-500">Applications sur mesure, sites Web, solutions métier.</p>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Développement</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Applications sur mesure, sites Web, solutions métier.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
                     <div class="text-3xl mb-3">🏢</div>
-                    <h3 class="font-bold text-slate-900 mb-2">Vie & Projets</h3>
-                    <p class="text-xs text-slate-500">Réalisations sur le terrain, assistance à distance, conseils.</p>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Vie & Projets</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Réalisations sur le terrain, assistance à distance, conseils.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Liste complète des services -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-20 bg-slate-50 dark:bg-slate-900/50 transition-colors">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Nos Services Informatiques</h2>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">Nos Services Informatiques</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Dépannage informatique</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Maintenance ordinateurs</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation Windows</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réparation PC portable & bureau</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réseau informatique</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Routeurs MikroTik & Ubiquiti</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Caméras IP & Sécurité</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Développement Web & Apps</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sécurité informatique & Audit</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Contrat de maintenance</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Assistance à distance</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation imprimantes & Wi-Fi</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sauvegarde des données & Cloud</div>
-                <div class="p-4 border border-slate-200 rounded-lg hover:border-blue-500 hover:shadow-md transition">Support informatique en entreprise</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Dépannage informatique</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Maintenance ordinateurs</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation Windows</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réparation PC portable & bureau</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Réseau informatique</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Routeurs MikroTik & Ubiquiti</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Caméras IP & Sécurité</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Développement Web & Apps</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sécurité informatique & Audit</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Contrat de maintenance</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Assistance à distance</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Installation imprimantes & Wi-Fi</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Sauvegarde des données & Cloud</div>
+                <div class="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-blue-500 hover:shadow-md transition">Support informatique en entreprise</div>
             </div>
         </div>
     </section>
 
-    <!-- Formulaire de Contact -->
+    <!-- Formulaire de Contact avec Pièce Jointe -->
     <section id="contact" class="py-20 bg-slate-900 text-white">
         <div class="max-w-3xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-4">Contactez-nous pour un devis gratuit</h2>
             <p class="text-center text-slate-400 mb-8">Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
             
-            <form action="https://formspree.io/f/mkjwnoov" method="POST" class="space-y-4">
+            <form action="https://formspree.io/f/mkjwnoov" method="POST" enctype="multipart/form-data" class="space-y-4">
                 <div>
                     <label class="block text-sm mb-1">Nom / Nom de l'entreprise</label>
                     <input type="text" name="name" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
@@ -227,6 +288,10 @@
                     <label class="block text-sm mb-1">Message / Détails de la demande</label>
                     <textarea name="message" rows="4" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"></textarea>
                 </div>
+                <div>
+                    <label class="block text-sm mb-1">Joindre un fichier (Optionnel : photo du matériel, schéma, CDC)</label>
+                    <input type="file" name="attachment" class="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
+                </div>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition">Envoyer la demande de devis</button>
             </form>
         </div>
@@ -247,5 +312,33 @@
         </svg>
     </a>
 
+    <!-- Script JavaScript pour la gestion du Dark Mode -->
+    <script>
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // Afficher la bonne icône selon le mode
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Basculer l'icône
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // Basculer le mode sombr/clair
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
