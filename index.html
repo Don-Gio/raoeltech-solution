@@ -392,44 +392,6 @@
         </div>
     </section>
 
-    <!-- Formulaire de Contact avec Pièce Jointe -->
-    <section id="contact" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-4">Contactez-nous pour un devis gratuit</h2>
-            <p class="text-center text-slate-400 mb-8">Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
-            
-            <form action="https://formspree.io/f/mkjwnoov" method="POST" enctype="multipart/form-data" class="space-y-4">
-                <div>
-                    <label class="block text-sm mb-1">Nom / Nom de l'entreprise</label>
-                    <input type="text" name="name" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm mb-1">Email ou Numéro de Téléphone</label>
-                    <input type="text" name="contact" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm mb-1">Service recherché</label>
-                    <select name="service" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
-                        <option>Maintenance informatique</option>
-                        <option>Réseaux & Infrastructures (MikroTik/Ubiquiti)</option>
-                        <option>Développement logiciel / Web</option>
-                        <option>Sécurité & Caméras IP</option>
-                        <option>Autre demande</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm mb-1">Message / Détails de la demande</label>
-                    <textarea name="message" rows="4" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"></textarea>
-                </div>
-                <div>
-                    <label class="block text-sm mb-1">Joindre un fichier (Optionnel : photo du matériel, schéma, CDC)</label>
-                    <input type="file" name="attachment" class="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
-                </div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition">Envoyer la demande de devis</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Section Réparation Smartphone & Mobile -->
 <section id="services-mobile" class="py-16 bg-slate-900 border-t border-slate-800 text-slate-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -514,6 +476,44 @@
 
   </div>
 </section>
+    
+    <!-- Formulaire de Contact avec Pièce Jointe -->
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">Contactez-nous pour un devis gratuit</h2>
+            <p class="text-center text-slate-400 mb-8">Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
+            
+            <form action="https://formspree.io/f/mkjwnoov" method="POST" enctype="multipart/form-data" class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-1">Nom / Nom de l'entreprise</label>
+                    <input type="text" name="name" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Email ou Numéro de Téléphone</label>
+                    <input type="text" name="contact" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Service recherché</label>
+                    <select name="service" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
+                        <option>Maintenance informatique</option>
+                        <option>Réseaux & Infrastructures (MikroTik/Ubiquiti)</option>
+                        <option>Développement logiciel / Web</option>
+                        <option>Sécurité & Caméras IP</option>
+                        <option>Autre demande</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Message / Détails de la demande</label>
+                    <textarea name="message" rows="4" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Joindre un fichier (Optionnel : photo du matériel, schéma, CDC)</label>
+                    <input type="file" name="attachment" class="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition">Envoyer la demande de devis</button>
+            </form>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 transition-colors">
