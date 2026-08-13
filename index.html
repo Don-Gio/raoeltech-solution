@@ -496,6 +496,7 @@
           <a href="https://wa.me/261380859743?text=Bonjour,%20j'aimerais%20un%20devis%20pour%20la%20réparation%20de%20mon%20smartphone." 
              target="_blank" 
              rel="noopener noreferrer" 
+             onclick="gtag('event', 'click_whatsapp', { 'event_category': 'Contact', 'event_label': 'Devis Smartphone WhatsApp' });"
              title="Demander un devis réparation smartphone sur WhatsApp"
              class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg shadow-md transition-all duration-200 whitespace-nowrap text-sm flex items-center gap-2">
             Demander un devis express
@@ -514,7 +515,7 @@
         <h2 class="text-3xl font-bold text-center mb-4 text-slate-900 dark:text-white">Contactez-nous pour un devis gratuit</h2>
         <p class="text-center text-slate-600 dark:text-slate-400 mb-8">Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
         
-        <form action="https://formspree.io/f/mkjwnoov" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <form action="https://formspree.io/f/mkjwnoov" method="POST" enctype="multipart/form-data" onsubmit="gtag('event', 'submit_lead_form', { 'event_category': 'Engagement', 'event_label': 'Formulaire Devis Web' });" class="space-y-4">
           <div>
             <label class="block text-sm mb-1 font-medium">Nom / Nom de l'entreprise</label>
             <input type="text" name="name" required class="w-full p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors">
