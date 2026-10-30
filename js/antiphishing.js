@@ -1,27 +1,28 @@
 /**
- * Moteur d'analyse Anti-Phishing Professionnel — RaoelTech Solutions
- * Connecté aux bases de données de menaces Open-Source & Heuristique Avancée
+ * Moteur d'analyse Anti-Phishing Corrigé & Optimisé — RaoelTech Solutions
  */
 
 let globalThreatDatabase = {
-    maliciousUrls: [],
+    maliciousDomains: new Set(), // Utilisation d'un Set pour des recherches ultra-rapides O(1)
     loaded: false
 };
 
-// Chargement d'une base de données de phishing professionnelle open-source (ex: flux communautaire mis à jour en temps réel)
+// Chargement d'une base de données de menaces propre (format domaine)
 async function loadProfessionalThreatFeed() {
     try {
-        // Utilisation d'un flux JSON public de listes noires de phishing open-source
-        const response = await fetch('https://raw.githubusercontent.com/mitmproxy/proxy2/master/phishing_list.json' || 'https://urlhaus.abuse.ch/downloads/json/');
-        // Note: Si le flux distant nécessite un format spécifique, on peut utiliser un miroir JSON propre.
+        // Utilisation d'un flux de domaines malveillants open-source standard
+        const response = await fetch('https://raw.githubusercontent.com/mitmproxy/proxy2/master/phishing_list.json');
         if (response.ok) {
             const data = await response.json();
-            globalThreatDatabase.maliciousUrls = data;
+            // Alimentation du Set avec les domaines
+            if (Array.isArray(data)) {
+                data.forEach(domain => globalThreatDatabase.maliciousDomains.add(domain.toLowerCase()));
+            }
             globalThreatDatabase.loaded = true;
-            console.log("Base de données de menaces professionnelles synchronisée.");
+            console.log("Base de données de menaces synchronisée avec succès.");
         }
     } catch (e) {
-        console.warn("Mode heuristique autonome activé (Impossible de joindre le flux distant en temps réel).");
+        console.warn("Mode heuristique autonome actif (Impossible de joindre le flux distant).");
     }
 }
 
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             heuristicsList.innerHTML = "";
             if (analysis.flags.length === 0) {
                 const li = document.createElement("li");
-                li.textContent = "✔ Aucun indicateur suspect ni correspondance dans les bases de menaces mondiales.";
+                li.textContent = "✔ Aucun indicateur suspect détecté dans la structure de l'URL.";
                 li.className = "text-emerald-600 dark:text-emerald-400 font-medium";
                 heuristicsList.appendChild(li);
             } else {
@@ -101,13 +102,14 @@ function analyzeURL(rawUrl) {
 
     try {
         const parsedUrl = new URL(cleanUrl);
-        const hostname = parsedUrl.hostname;
+        const hostname = parsedUrl.hostname.toLowerCase();
         const fullString = parsedUrl.href;
+        const tld = hostname.split('.').pop();
 
-        // 1. Vérification dans la base de données de menaces globale
-        if (globalThreatDatabase.loaded && globalThreatDatabase.maliciousUrls.includes(fullString)) {
+        // 1. Correction : Vérification sécurisée dans la base de menaces globale
+        if (globalThreatDatabase.loaded && globalThreatDatabase.maliciousDomains.has(hostname)) {
             score += 100;
-            flags.matches("ALERTE ROUGE : Cette URL est signalée et répertoriée dans la base de données internationale des sites de phishing.");
+            flags.push("ALERTE ROUGE : Ce domaine est répertorié dans la base de données internationale des sites de phishing.");
         }
 
         // 2. Caractère '@' (Userinfo bypass)
@@ -130,7 +132,7 @@ function analyzeURL(rawUrl) {
             flags.push(`Alerte Entropie : Nom de domaine hautement aléatoire (Score: ${entropy.toFixed(2)}), caractéristique d'un générateur de botnet.`);
         }
 
-        // 5. Typosquatting (Marques internationales et locales de Madagascar)
+        // 5. Typosquatting (Marques internationales et locales)
         const targetBrands = ["airtel", "telma", "orange", "bni", "bmoi", "google", "microsoft", "facebook", "paypal", "netflix"];
         targetBrands.forEach(brand => {
             if (hostname.includes(brand) && !hostname.endsWith(`${brand}.mg`) && !hostname.endsWith(`${brand}.com`) && !hostname.endsWith(`www.${brand}.com`)) {
